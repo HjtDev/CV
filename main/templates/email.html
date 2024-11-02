@@ -1,0 +1,67 @@
+<html dir="rtl" lang="fa">
+    <head>
+        <meta charset="UTF-8">
+        <style>
+            * {
+                direction: rtl;
+            }
+            body {
+                font-family: Arial, sans-serif;
+                margin: 0;
+                padding: 0;
+                background-color: #f4f4f4;
+            }
+            .container {
+                width: 100%;
+                max-width: 600px;
+                margin: 20px auto;
+                background-color: #ffffff;
+                border-radius: 8px;
+                box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+                overflow: hidden;
+            }
+            .header {
+                background-color: #007bff;
+                color: white;
+                padding: 20px;
+                text-align: center;
+            }
+            .header h1 {
+                margin: 0;
+            }
+            .content {
+                padding: 20px;
+            }
+            .content h2 {
+                color: #333;
+            }
+            .content p {
+                font-size: 16px;
+                line-height: 1.5;
+                color: #555;
+            }
+            .footer {
+                background-color: #f4f4f4;
+                text-align: center;
+                padding: 10px;
+                font-size: 12px;
+                color: #777;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <div class="header">
+                <h1>پیام جدید از طرف {{ name }}</h1>
+            </div>
+            <div class="content">
+                <h2>پیام:</h2>
+                <p>{{ message }}</p>
+                <p><strong>ایمیل فرستنده:</strong> {{ email }}</p> <!-- Include sender's email -->
+            </div>
+            <div class="footer">
+                <p>https://mhnikoobakht.dev</p>
+            </div>
+        </div>
+    </body>
+</html>

@@ -921,8 +921,8 @@
 											<div class="block-title">
 												<h3><span>تماس</span> با من</h3>
 											</div>
-											<form id="contact-form" method="post" action="#">
-
+											<form id="contact-form" method="post">
+                                                {% csrf_token %}
 												<div class="messages"></div>
 
 												<div class="controls">
