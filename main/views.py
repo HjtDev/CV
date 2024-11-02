@@ -1,4 +1,4 @@
-from django.http import HttpResponse, JsonResponse
+from django.http import HttpResponse, JsonResponse, Http404
 from django.shortcuts import render, redirect
 from django.views.generic import TemplateView
 from django.core.mail import send_mail
@@ -46,3 +46,11 @@ def contact_view(request):
         'type': 'error',
         'message': 'لطفا همه فیلدها را پر کنید.'
     })
+
+
+def get_portfolio_view(request, portfolio):
+    try:
+        return render(request, str(portfolio))
+    except Exception as e:
+        print(e)
+        return Http404('Failed to find that page')
