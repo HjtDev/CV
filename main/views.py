@@ -25,7 +25,6 @@ def contact_view(request):
                     recipient_list=['m.h.nikoobakht@gmail.com'],
                     html_message=html_message
                 )
-                print('b')
 
                 return JsonResponse({
                     'success': True,
