@@ -53,4 +53,4 @@ def get_portfolio_view(request, portfolio):
         return render(request, str(portfolio))
     except Exception as e:
         print(e)
-        return Http404('Failed to find that page')
+        return Http404(e)
