@@ -52,10 +52,10 @@
 
 		$('#contact-form').on('submit', function (e) {
 			if (!e.isDefaultPrevented()) {
-				var url = "contact/";
+				var url = "/contact/";
 
 				$.ajax({
-					type: "POST",
+					type: "GET",
 					url: url,
 					data: $(this).serialize(),
 					success: function (data) {

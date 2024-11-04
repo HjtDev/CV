@@ -10,10 +10,10 @@ def index_view(request):
 
 
 def contact_view(request):
-    if request.method == 'POST':
-        name = request.POST.get('name')
-        email = request.POST.get('email')
-        message = request.POST.get('message')
+    if request.method == 'GET':
+        name = request.GET.get('name')
+        email = request.GET.get('email')
+        message = request.GET.get('message')
 
         if name and email and message:
             try:
