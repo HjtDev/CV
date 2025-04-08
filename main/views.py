@@ -2,7 +2,7 @@ from django.http import HttpResponse, JsonResponse, Http404
 from django.shortcuts import render, redirect
 from django.views.generic import TemplateView
 from django.core.mail import send_mail
-from decouple import config
+from .models import Contact
 
 
 def index_view(request):
@@ -17,14 +17,7 @@ def contact_view(request):
 
         if name and email and message:
             try:
-                html_message = render(request, 'email.html', {'name': name, 'message': message, 'email': email}).content.decode('utf-8')
-                send_mail(
-                    subject=f'پیام جدید از طرف {name}',
-                    message='This is a plain text fallback message.',
-                    from_email='info@mhnikoobakht.dev',
-                    recipient_list=['m.h.nikoobakht@gmail.com'],
-                    html_message=html_message
-                )
+                Contact.objects.create(name=name, email=email, message=message)
 
                 return JsonResponse({
                     'success': True,
@@ -45,11 +38,3 @@ def contact_view(request):
         'type': 'error',
         'message': 'لطفا همه فیلدها را پر کنید.'
     })
-
-
-def get_portfolio_view(request, portfolio):
-    try:
-        return render(request, str(portfolio))
-    except Exception as e:
-        print(e)
-        return Http404(e)
