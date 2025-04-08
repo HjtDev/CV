@@ -44,11 +44,3 @@ def contact_view(request):
         'type': 'error',
         'message': 'لطفا همه فیلدها را پر کنید.'
     })
-
-
-def get_portfolio_view(request, portfolio):
-    try:
-        return render(request, str(portfolio))
-    except Exception as e:
-        print(e)
-        return Http404(e)

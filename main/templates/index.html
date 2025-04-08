@@ -404,7 +404,7 @@
                                 <div class="col-sm-12 col-md-12 col-lg-12">
                                     <div class="block">
                                         <div class="center download-resume">
-                                            <a href="{% static 'resume.pdf' %}" class="btn btn-secondary">دریافت
+                                            <a href="{% static 'ajax/../static/resume.pdf' %}" class="btn btn-secondary">دریافت
                                                 رزومه</a>
                                         </div>
                                     </div>
@@ -510,14 +510,14 @@
                                 <!-- Portfolio filter -->
                                 <ul id="portfolio_filters" class="portfolio-filters">
                                     <li class="active">
-                                        <a class="filter btn btn-sm btn-link active" data-group="all">همه</a>
+                                        <a class="filter btn btn-sm btn-link" data-group="all">همه</a>
                                     </li>
-                                    {#                                    <li>#}
-                                    {#                                        <a class="filter btn btn-sm btn-link" data-group="media">رسانه</a>#}
-                                    {#                                    </li>#}
-                                    {#                                    <li>#}
-                                    {#                                        <a class="filter btn btn-sm btn-link" data-group="illustration">تصویر</a>#}
-                                    {#                                    </li>#}
+                                    <li>
+                                        <a class="filter btn btn-sm btn-link active" data-group="public">پابلیک</a>
+                                    </li>
+                                    <li>
+                                        <a class="filter btn btn-sm btn-link" data-group="educational">تمرینی</a>
+                                    </li>
                                 </ul>
                                 <!-- End of Portfolio filter -->
 
@@ -525,12 +525,12 @@
                                 <div id="portfolio_grid" class="portfolio-grid portfolio-masonry masonry-grid-3">
 
                                     <!-- Portfolio Item 1 -->
-                                    <figure class="item" data-groups='["all", "media"]'>
-                                        <a class="ajax-page-load" href="ajax/portfolio-1.html">
-                                            <img src="{% static 'images/portfolio/full/oriflame-1.png' %}" alt="">
+                                    <figure class="item" data-groups='["all", "public"]'>
+                                        <a class="ajax-page-load" href="{% static 'ajax/portfolio-73.html' %}">
+                                            <img src="{% static 'images/portfolio/full/oriflame-1.png' %}" style="height: 174px;" alt="">
                                             <div>
                                                 <h5 class="name">اوریفلیم</h5>
-                                                <small>رسانه</small>
+                                                <small>پابلیک</small>
                                                 <i class="fa fa-file-text-o"></i>
                                             </div>
                                         </a>
@@ -538,12 +538,12 @@
                                     <!-- /Portfolio Item 1 -->
 
                                     <!-- Portfolio Item 4 -->
-                                    <figure class="item" data-groups='["all", "media"]'>
-                                        <a class="ajax-page-load" href="ajax/portfolio-2.html">
+                                    <figure class="item" data-groups='["all", "public"]'>
+                                        <a class="ajax-page-load" href="{% static 'ajax/portfolio-75.html' %}">
                                             <img src="{% static 'images/portfolio/full/noavaran-1.png' %}" alt="">
                                             <div>
                                                 <h5 class="name">نوآوران</h5>
-                                                <small>رسانه</small>
+                                                <small>پابلیک</small>
                                                 <i class="fa fa-file-text-o"></i>
                                             </div>
                                         </a>
@@ -551,12 +551,37 @@
                                     <!-- /Portfolio Item 4 -->
 
                                     <!-- Portfolio Item 4 -->
-                                    <figure class="item" data-groups='["all", "media"]'>
-                                        <a class="ajax-page-load" href="ajax/portfolio-3.html">
+                                    <figure class="item" data-groups='["all", "educational"]'>
+                                        <a class="ajax-page-load" href="{% static 'ajax/portfolio-76.html' %}">
                                             <img src="{% static 'images/portfolio/full/livechat-1.png' %}" alt="">
                                             <div>
                                                 <h5 class="name">چت زنده</h5>
-                                                <small>رسانه</small>
+                                                <small>تمرینی</small>
+                                                <i class="fa fa-file-text-o"></i>
+                                            </div>
+                                        </a>
+                                    </figure>
+                                    <!-- /Portfolio Item 4 -->
+
+                                    <!-- Portfolio Item 4 -->
+                                    <figure class="item" data-groups='["all", "educational"]'>
+                                        <a class="ajax-page-load" href="{% static 'ajax/portfolio-78.html' %}">
+                                            <img src="{% static 'images/portfolio/full/quiz-1.png' %}" style="height: 174px;" alt="">
+                                            <div>
+                                                <h5 class="name">بازی کوییز</h5>
+                                                <small>تمرینی</small>
+                                                <i class="fa fa-file-text-o"></i>
+                                            </div>
+                                        </a>
+                                    </figure>
+
+                                    <!-- Portfolio Item 4 -->
+                                    <figure class="item" data-groups='["all", "public"]'>
+                                        <a class="ajax-page-load" href="{% static 'ajax/portfolio-79.html' %}">
+                                            <img src="{% static 'images/portfolio/full/press-2.jpg' %}" style="height: 174px;" alt="">
+                                            <div>
+                                                <h5 class="name">پرس هیدرولیک هوشمند</h5>
+                                                <small>پابلیک</small>
                                                 <i class="fa fa-file-text-o"></i>
                                             </div>
                                         </a>
