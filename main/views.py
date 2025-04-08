@@ -2,7 +2,6 @@ from django.http import HttpResponse, JsonResponse, Http404
 from django.shortcuts import render, redirect
 from django.views.generic import TemplateView
 from django.core.mail import send_mail
-from decouple import config
 
 
 def index_view(request):
