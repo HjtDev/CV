@@ -1,8 +1,7 @@
 from django.http import HttpResponse, JsonResponse, Http404
 from django.shortcuts import render, redirect
-from django.views.generic import TemplateView
-from django.core.mail import send_mail
-from decouple import config
+import json
+from .models import Contact
 
 
 def index_view(request):
@@ -11,45 +10,46 @@ def index_view(request):
 
 def contact_view(request):
     if request.method == 'GET':
-        name = request.GET.get('name')
-        email = request.GET.get('email')
-        message = request.GET.get('message')
+        try:
+            # Load JSON data from the request body
+            data = dict(request.GET)
 
-        if name and email and message:
-            try:
-                html_message = render(request, 'email.html', {'name': name, 'message': message, 'email': email}).content.decode('utf-8')
-                send_mail(
-                    subject=f'پیام جدید از طرف {name}',
-                    message='This is a plain text fallback message.',
-                    from_email='info@mhnikoobakht.dev',
-                    recipient_list=['m.h.nikoobakht@gmail.com'],
-                    html_message=html_message
-                )
+            name = data.get('name')[0]
+            email = data.get('email')[0]
+            message = data.get('message')[0]
+
+            if name and email and message:
+                Contact.objects.create(name=name, email=email, message=message)
 
                 return JsonResponse({
                     'success': True,
                     'type': 'success',
                     'message': 'پیام شما دریافت شد و پاسخ به ایمیل شما ارسال خواهد شد.'
                 })
-            except Exception as e:
-                print(e)
+            else:
                 return JsonResponse({
                     'success': False,
-                    'error': str(e),
                     'type': 'error',
-                    'message': 'مشکلی پیش آمده است لطفا مجددا تلاش کنید.'
+                    'message': 'لطفا همه فیلدها را پر کنید.'
                 })
+        except json.JSONDecodeError:
+            return JsonResponse({
+                'success': False,
+                'type': 'error',
+                'message': 'فرمت داده‌ها صحیح نیست.'
+            }, status=400)
+        except Exception as e:
+            print(e)
+            return JsonResponse({
+                'success': False,
+                'error': str(e),
+                'type': 'error',
+                'message': 'مشکلی پیش آمده است لطفا مجددا تلاش کنید.'
+            })
 
     return JsonResponse({
         'success': False,
         'type': 'error',
-        'message': 'لطفا همه فیلدها را پر کنید.'
+        'message': 'متد درخواستی صحیح نیست.'
     })
 
-
-def get_portfolio_view(request, portfolio):
-    try:
-        return render(request, str(portfolio))
-    except Exception as e:
-        print(e)
-        return Http404(e)
