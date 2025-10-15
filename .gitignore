@@ -125,7 +125,7 @@ dmypy.json
 
 .idea/
 
-.env
+./.env
 
 main/static/*
 !main/static/ajax
